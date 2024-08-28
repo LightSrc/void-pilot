@@ -31,6 +31,18 @@ pub const menuCollection = [_]MenuList{
                 .xbps_script = null,
                 .flatpak_script = null,
             },
+            .{
+                .title = "Install Window Managers",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Developer Tools",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
         },
         .state = .mainMenu,
         .parent = null,
@@ -38,20 +50,110 @@ pub const menuCollection = [_]MenuList{
     .{
         .items = &[_]InstallMenu{
             .{
-                .title = "Install Thorium Browser",
+                .title = "Install Audio & Video",
                 .child = null,
                 .xbps_script = null,
                 .flatpak_script = null,
             },
             .{
-                .title = "Install Firefox Browser",
+                .title = "Install Browsers",
+                .child = .browsersMenu,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Messaging Clients",
                 .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/apps/firefox_xbps.sh"},
-                .flatpak_script = &[_][]const u8{"./scripts/apps/firefox_flatpak.sh"},
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Terminals",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Game Launchers",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Code Editors & IDEs",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = null,
             },
         },
         .state = .appMenu,
         .parent = .mainMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Install Brave",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Chromium",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Ungoogled Chromium",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Firefox",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/apps/firefox_xbps.sh"},
+                .flatpak_script = &[_][]const u8{"./scripts/apps/firefox_flatpak.sh"},
+            },
+            .{
+                .title = "Install Floorp",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Librewolf",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Opera",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Thorium",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Vivaldi",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Zen",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+        },
+        .state = .browsersMenu,
+        .parent = .appMenu,
     },
     .{
         .items = &[_]InstallMenu{

@@ -1,1 +1,6 @@
-pub const MenuState = enum { mainMenu, appMenu, xbpsOrFlatpak };
+pub const MenuState = enum {
+    mainMenu,
+    appMenu,
+    browsersMenu,
+    xbpsOrFlatpak,
+};
