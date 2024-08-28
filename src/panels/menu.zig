@@ -42,7 +42,10 @@ pub fn setActiveMenu(state: MenuState) !void {
     for (menuCollection) |menu| {
         if (menu.state == state) {
             for (menu.items) |iMenu| {
-                try titles_.append(.{ .title = iMenu.title });
+                const suffix: []const u8 = if (iMenu.flatpak_script != null and iMenu.xbps_script == null) " (flatpak)" else "";
+                const slices = [_][]const u8{ iMenu.title, suffix };
+                const newTitle = try std.mem.concat(memoryModule.alloc, u8, &slices);
+                try titles_.append(.{ .title = newTitle });
             }
         }
     }

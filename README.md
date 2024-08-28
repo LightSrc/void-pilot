@@ -16,6 +16,6 @@ The project is currently in development, with no estimated time of arrival (ETA)
 
 * **Programming Language**: The project is written in Zig.
 * **User Interface**: We utilize libvaxis for a terminal-based user interface (TUI).
-* **Why Scripts Not Built-In Binary?**
+* **Why Scripts Are Not Built In Binary?**
     + When building the project, you'll receive both a binary and scripts as output.
     + Scripts are not included in the binary to ensure users have control over them if any issues arise during installation.
