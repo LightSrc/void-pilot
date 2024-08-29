@@ -50,7 +50,7 @@ jobs:
                   zig env
 
             - name: Build
-              run: zig build -Drelease-safe -Dtarget=${{ matrix.TARGET }}
+              run: zig build -Doptimize=ReleaseSafe -Dtarget=${{ matrix.TARGET }}
 
             - name: Prepare release assets
               shell: bash
