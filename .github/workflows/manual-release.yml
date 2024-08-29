@@ -1,8 +1,12 @@
 name: Manual Release
+
 permissions:
     contents: write
 
-on: [workflow_dispatch]
+on:
+    workflow_dispatch:
+        inputs:
+            version: { required: true, description: "The version number" }
 
 jobs:
     changelog:
@@ -39,7 +43,8 @@ jobs:
                   submodules: recursive
 
             - name: Set the release version
-              run: echo "RELEASE_VERSION=${GITHUB_REF:11}" >> $GITHUB_ENV
+              run: |
+                  echo ::set-output name=version::${{ github.event.inputs.version }}
 
             - name: Install Zig
               uses: goto-bus-stop/setup-zig@v2
@@ -60,21 +65,21 @@ jobs:
                   mkdir -p release/scripts
                   cp zig-out/bin/void-pilot release/
                   cp -r zig-out/bin/scripts/* release/scripts/
-                  mv release/ void-pilot-${{ env.RELEASE_VERSION }}/
+                  mv release/ void-pilot-${{ github.event.inputs.version }}/
 
             - name: Create release artifacts
               shell: bash
               run: |
-                  tar -czvf void-pilot-${{ env.RELEASE_VERSION }}-${{ matrix.TARGET }}.tar.gz \
-                    void-pilot-${{ env.RELEASE_VERSION }}/
+                  tar -czvf void-pilot-${{ github.event.inputs.version }}-${{ matrix.TARGET }}.tar.gz \
+                    void-pilot-${{ github.event.inputs.version }}/
 
             - name: Upload the binary releases
               uses: svenstaro/upload-release-action@v2
               with:
-                  file: void-pilot-${{ env.RELEASE_VERSION }}-${{ matrix.TARGET }}*
+                  file: void-pilot-${{ github.event.inputs.version }}-${{ matrix.TARGET }}*
                   file_glob: true
                   overwrite: true
                   tag: ${{ github.ref }}
-                  release_name: "Release v${{ env.RELEASE_VERSION }}"
+                  release_name: "Release v${{ github.event.inputs.version }}"
                   body: ${{ needs.changelog.outputs.release_body }}
                   repo_token: ${{ secrets.GITHUB_TOKEN }}
