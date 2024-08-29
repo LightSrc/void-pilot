@@ -76,6 +76,7 @@ jobs:
             - name: Upload the binary releases
               uses: softprops/action-gh-release@v2
               with:
+                  tag_name: ${{ github.event.inputs.version }}
                   name: Release v${{ github.event.inputs.version }}
                   body: ${{ needs.changelog.outputs.release_body }}
                   append_body: false
