@@ -77,9 +77,7 @@ jobs:
             - name: Upload the binary releases
               uses: svenstaro/upload-release-action@v2
               with:
-                  file: |
-                      void-pilot-${{ matrix.TARGET }}*
-                      run.sh
+                  file: "void-pilot-${{ matrix.TARGET }}*, run.sh"
                   file_glob: true
                   overwrite: true
                   tag: ${{ github.ref }}
