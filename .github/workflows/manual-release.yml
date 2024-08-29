@@ -65,18 +65,21 @@ jobs:
                   mkdir -p release/scripts
                   cp zig-out/bin/void-pilot release/
                   cp -r zig-out/bin/scripts/* release/scripts/
-                  mv release/ void-pilot-${{ github.event.inputs.version }}/
+                  cp run.sh release/
+                  mv release/ void-pilot/
 
             - name: Create release artifacts
               shell: bash
               run: |
-                  tar -czvf void-pilot-${{ github.event.inputs.version }}-${{ matrix.TARGET }}.tar.gz \
-                    void-pilot-${{ github.event.inputs.version }}/
+                  tar -czvf void-pilot-${{ matrix.TARGET }}.tar.gz \
+                    void-pilot/
 
             - name: Upload the binary releases
               uses: svenstaro/upload-release-action@v2
               with:
-                  file: void-pilot-${{ github.event.inputs.version }}-${{ matrix.TARGET }}*
+                  file: |
+                      void-pilot-${{ matrix.TARGET }}*
+                      run.sh
                   file_glob: true
                   overwrite: true
                   tag: ${{ github.ref }}
