@@ -16,6 +16,7 @@ pub fn main() !void {
     defer tty.deinit();
 
     vx = try vaxis.init(memoryModule.alloc, .{});
+    vx.sgr = .legacy;
     defer vx.deinit(memoryModule.alloc, tty.anyWriter());
     var loop: vaxis.Loop(union(enum) {
         key_press: vaxis.Key,

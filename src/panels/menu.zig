@@ -15,7 +15,11 @@ pub const MenuWindow = struct {
 
 pub var activeMenu: MenuState = .mainMenu;
 pub var menuWindow: MenuWindow = undefined;
-pub var menuTable: vaxis.widgets.Table.TableContext = .{ .selected_bg = selected_bg };
+pub var menuTable: vaxis.widgets.Table.TableContext = .{
+    .active_bg = selected_bg,
+    .selected_bg = selected_bg,
+    .header_names = .{ .custom = &.{"Select Action"} },
+};
 
 var titles_ = std.ArrayList(SelectMenu).init(memoryModule.alloc);
 var lastActiveMenu_: ?MenuState = null;
@@ -56,7 +60,6 @@ pub fn drawMenu(win: *const vaxis.Window) !void {
     try vaxis.widgets.Table.drawTable(
         memoryModule.event_alloc,
         menuWindow.window,
-        &.{"Select Action"},
         titles_,
         &menuTable,
     );
