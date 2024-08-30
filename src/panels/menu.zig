@@ -8,6 +8,7 @@ const InstallMenu = @import("../models/installMenu.zig").InstallMenu;
 const MenuList = @import("../models/menuList.zig").MenuList;
 const menuCollection = @import("../menuCollection.zig").menuCollection;
 const selected_bg = @import("../style.zig").selected_bg;
+const active_bg = @import("../style.zig").active_bg;
 
 pub const MenuWindow = struct {
     window: vaxis.Window,
@@ -16,8 +17,10 @@ pub const MenuWindow = struct {
 pub var activeMenu: MenuState = .mainMenu;
 pub var menuWindow: MenuWindow = undefined;
 pub var menuTable: vaxis.widgets.Table.TableContext = .{
-    .active_bg = selected_bg,
+    .active_bg = active_bg,
     .selected_bg = selected_bg,
+    .row_bg_1 = .{ .index = 234 },
+    .row_bg_2 = .{ .index = 233 },
     .header_names = .{ .custom = &.{"Select Action"} },
 };
 
