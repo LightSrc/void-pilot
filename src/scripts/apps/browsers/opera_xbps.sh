@@ -1,2 +1,2 @@
 #!/bin/sh -e
-sudo xbps-install -S opera
+sudo xbps-install -Sy opera

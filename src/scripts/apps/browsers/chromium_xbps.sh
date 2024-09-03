@@ -1,2 +1,2 @@
 #!/bin/sh -e
-sudo xbps-install -S chromium
+sudo xbps-install -Sy chromium

@@ -63,7 +63,7 @@ pub const menuCollection = [_]MenuList{
             },
             .{
                 .title = "Install Messaging Clients",
-                .child = null,
+                .child = .messagingMenu,
                 .xbps_script = null,
                 .flatpak_script = null,
             },
@@ -153,6 +153,30 @@ pub const menuCollection = [_]MenuList{
             },
         },
         .state = .browsersMenu,
+        .parent = .appMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Install Discord",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/apps/messaging/discord_xbps.sh"},
+                .flatpak_script = &[_][]const u8{"./scripts/apps/messaging/discord_flatpak.sh"},
+            },
+            .{
+                .title = "Install Slack",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = &[_][]const u8{"./scripts/apps/messaging/slack_flatpak.sh"},
+            },
+            .{
+                .title = "Install Telegram Desktop",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/apps/messaging/telegram_xbps.sh"},
+                .flatpak_script = &[_][]const u8{"./scripts/apps/messaging/telegram_flatpak.sh"},
+            },
+        },
+        .state = .messagingMenu,
         .parent = .appMenu,
     },
     .{

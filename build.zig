@@ -21,7 +21,7 @@ pub fn build(b: *std.Build) void {
     const mkdir_scripts = b.addSystemCommand(&[_][]const u8{
         "sh",
         "-c",
-        "mkdir -p zig-out/bin/scripts/flatpak/ zig-out/bin/scripts/apps/browsers/ && cp -r src/scripts/* zig-out/bin/scripts",
+        "mkdir -p zig-out/bin/scripts/ && cp -r src/scripts/* zig-out/bin/scripts",
     });
     exe.step.dependOn(&mkdir_scripts.step);
 
