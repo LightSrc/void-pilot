@@ -9,21 +9,11 @@ fi
 
 sudo xbps-install -Sy discord
 
-# Run Discord in the background
-Discord &
-
-# Get the process ID of Discord
-DISCORD_PID=$!
-
-# Wait for 20 seconds to allow settings.json to be created
-sleep 20
-
-# Kill the Discord process
-kill $DISCORD_PID
-
 # https://github.com/void-linux/void-packages/blob/4b2b0356079a16c5a633cdb4ee779a6e5a530a70/srcpkgs/discord-ptb/INSTALL.msg
 # This will skip host update, because That repository will never be up-to-date in minute or hour
 _CONFIG_FILE=~/.config/discord/settings.json
+mkdir -p ~/.config/discord
+
 touch $_CONFIG_FILE
 
 # Read the existing content or initialize with an empty JSON object
@@ -32,12 +22,12 @@ if [ -z "$content" ]; then
     content="{}"
 fi
 
-# Update the JSON content
-updated_content=$(echo "$content" | sed 's/}/, "SKIP_HOST_UPDATE": true}/')
-
-# Handle the case where the JSON object is empty
-if [ "$content" = "{}" ]; then
-    updated_content='{"SKIP_HOST_UPDATE": true}'
+# Check if SKIP_HOST_UPDATE already exists
+if echo "$content" | grep -q '"SKIP_HOST_UPDATE"'; then
+    updated_content="$content"
+else
+    # Update the JSON content
+    updated_content=$(echo "$content" | sed '0,/{/s//{ "SKIP_HOST_UPDATE": true, /')
 fi
 
 # Write the updated content back to the file
