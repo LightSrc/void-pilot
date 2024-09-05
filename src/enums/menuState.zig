@@ -3,5 +3,7 @@ pub const MenuState = enum {
     appMenu,
     browsersMenu,
     messagingMenu,
+    audioVideoMenu,
+    terminalsMenu,
     xbpsOrFlatpak,
 };

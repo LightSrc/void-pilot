@@ -51,7 +51,7 @@ pub const menuCollection = [_]MenuList{
         .items = &[_]InstallMenu{
             .{
                 .title = "Install Audio & Video",
-                .child = null,
+                .child = .audioVideoMenu,
                 .xbps_script = null,
                 .flatpak_script = null,
             },
@@ -69,7 +69,7 @@ pub const menuCollection = [_]MenuList{
             },
             .{
                 .title = "Install Terminals",
-                .child = null,
+                .child = .terminalsMenu,
                 .xbps_script = null,
                 .flatpak_script = null,
             },
@@ -164,6 +164,18 @@ pub const menuCollection = [_]MenuList{
                 .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "com.discordapp.Discord" },
             },
             .{
+                .title = "Install Signal Desktop",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "Signal-Desktop" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "org.signal.Signal" },
+            },
+            .{
+                .title = "Install Skype",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "skype" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "com.skype.Client" },
+            },
+            .{
                 .title = "Install Slack",
                 .child = null,
                 .xbps_script = null,
@@ -177,6 +189,90 @@ pub const menuCollection = [_]MenuList{
             },
         },
         .state = .messagingMenu,
+        .parent = .appMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Install Audacity",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "audacity" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "org.audacityteam.Audacity" },
+            },
+            .{
+                .title = "Install Kdenlive",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "audacity" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "org.kde.kdenlive" },
+            },
+            .{
+                .title = "Install Spotify",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "com.spotify.Client" },
+            },
+            .{
+                .title = "Install OBS Studio",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "obs" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "com.obsproject.Studio" },
+            },
+            .{
+                .title = "Install VLC",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "vlc" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "org.videolan.VLC" },
+            },
+        },
+        .state = .audioVideoMenu,
+        .parent = .appMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Install Alacritty",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "alacritty" },
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Gnome Terminal",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "gnome-terminal" },
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Kitty",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "kitty" },
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Konsole",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "konsole" },
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Simple Terminal (st)",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "st" },
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Yakuake",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "yakuake" },
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Xterm",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "xterm" },
+                .flatpak_script = null,
+            },
+        },
+        .state = .terminalsMenu,
         .parent = .appMenu,
     },
     .{
