@@ -75,7 +75,7 @@ pub const menuCollection = [_]MenuList{
             },
             .{
                 .title = "Install Game Launchers",
-                .child = null,
+                .child = .gameLaunchersMenu,
                 .xbps_script = null,
                 .flatpak_script = null,
             },
@@ -273,6 +273,36 @@ pub const menuCollection = [_]MenuList{
             },
         },
         .state = .terminalsMenu,
+        .parent = .appMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Install Bottles",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "com.usebottles.bottles" },
+            },
+            .{
+                .title = "Install Heroic Games Launcher",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "com.heroicgameslauncher.hgl" },
+            },
+            .{
+                .title = "Install Lutris",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "lutris" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "net.lutris.Lutris" },
+            },
+            .{
+                .title = "Install Steam",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "steam" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "com.valvesoftware.Steam" },
+            },
+        },
+        .state = .gameLaunchersMenu,
         .parent = .appMenu,
     },
     .{

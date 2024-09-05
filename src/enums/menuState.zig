@@ -5,5 +5,6 @@ pub const MenuState = enum {
     messagingMenu,
     audioVideoMenu,
     terminalsMenu,
+    gameLaunchersMenu,
     xbpsOrFlatpak,
 };
