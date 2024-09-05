@@ -50,6 +50,12 @@ pub const menuCollection = [_]MenuList{
     .{
         .items = &[_]InstallMenu{
             .{
+                .title = "Install Archivers",
+                .child = .archiversMenu,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
                 .title = "Install Audio & Video",
                 .child = .audioVideoMenu,
                 .xbps_script = null,
@@ -88,6 +94,36 @@ pub const menuCollection = [_]MenuList{
         },
         .state = .appMenu,
         .parent = .mainMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Install Ark",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "ark" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "org.kde.ark" },
+            },
+            .{
+                .title = "Install File Roller",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "file-roller" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "org.gnome.FileRoller" },
+            },
+            .{
+                .title = "Install PeaZip",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "io.github.peazip.PeaZip" },
+            },
+            .{
+                .title = "Install 7Zip",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "7zip" },
+                .flatpak_script = null,
+            },
+        },
+        .state = .archiversMenu,
+        .parent = .appMenu,
     },
     .{
         .items = &[_]InstallMenu{
