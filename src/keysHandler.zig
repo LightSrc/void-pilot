@@ -4,6 +4,7 @@ const vaxis = @import("vaxis");
 const menu = @import("panels/menu.zig");
 
 pub fn onKey(key: vaxis.Key) !void {
+    if (menu.menuTable.active == false) return;
     if (key.matchesAny(&.{ vaxis.Key.up, 'k' }, .{})) menu.goUp();
     if (key.matchesAny(&.{ vaxis.Key.down, 'j' }, .{})) menu.goDown();
 

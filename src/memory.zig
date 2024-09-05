@@ -9,7 +9,7 @@ pub const alloc = gpa.allocator();
 var event_arena = heap.ArenaAllocator.init(alloc);
 pub const event_alloc = event_arena.allocator();
 
-pub fn init() void {
+pub fn init() !void {
     defer if (gpa.detectLeaks()) log.err("Memory leak detected!", .{});
     defer event_arena.deinit();
 }

@@ -35,9 +35,7 @@ pub fn drawHeader(win: *const vaxis.Window) void {
     for (title_segs[0..]) |*title_seg| {
         title_seg.*.style.bg = other_bg;
     }
-    top_bar.fill(.{ .style = .{
-        .bg = other_bg,
-    } });
+    top_bar.fill(.{ .style = .{ .bg = other_bg } });
     const logo_bar = vaxis.widgets.alignment.center(
         top_bar,
         90,
