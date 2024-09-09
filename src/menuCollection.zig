@@ -87,7 +87,7 @@ pub const menuCollection = [_]MenuList{
             },
             .{
                 .title = "Install Code Editors & IDEs",
-                .child = null,
+                .child = .codeEditorsMenu,
                 .xbps_script = null,
                 .flatpak_script = null,
             },
@@ -339,6 +339,54 @@ pub const menuCollection = [_]MenuList{
             },
         },
         .state = .gameLaunchersMenu,
+        .parent = .appMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Install Code - OSS",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "vscode" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "com.visualstudio.code-oss" },
+            },
+            .{
+                .title = "Install Doom Emacs",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/apps/code/doom_emacs.sh"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Emacs",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "emacs" },
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install LazyVim",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/apps/code/lazyvim.sh"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Vim",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "vim" },
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Visual Studio Code",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "com.visualstudio.code" },
+            },
+            .{
+                .title = "Install Zed",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/apps/code/zed.sh"},
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "dev.zed.Zed" },
+            },
+        },
+        .state = .codeEditorsMenu,
         .parent = .appMenu,
     },
     .{
