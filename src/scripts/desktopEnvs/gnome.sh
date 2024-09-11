@@ -30,7 +30,7 @@ if [ ! $(isPulseAudioInstalled) ]; then
     fi
 fi
 
-if [[ ! $(isGdmInstalled) && ! $(isSddmInstalled) ]]; then
+if [ ! $(isGdmInstalled) ] && ! [ $(isSddmInstalled) ]; then
     read -p "Do you want to install Display Manager? (gdm (recommended), sddm or press ENTER if none of these): " answer
 
     if [ "$answer" == "sddm" ]; then
