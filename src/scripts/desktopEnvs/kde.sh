@@ -15,7 +15,7 @@ isPulseAudioInstalled() {
 sudo xbps-install -Sy wayland xorg-server-xwayland kde5 dbus mesa-dri
 
 read -p "Do you want to install KDE base apps? (yes (recommended), no): " answer
-if [[ "$answer" == "yes" || "$answer" == "y" ]]; then
+if [ "$answer" == "yes"] || [ "$answer" == "y" ]; then
     sudo xbps-install -Sy kde5-baseapps
 fi
 
@@ -24,7 +24,7 @@ sudo ln -s /etc/sv/dbus /var/service
 
 if [ ! $(isPulseAudioInstalled) ]; then
     read -p "Do you want to install pulseaudio? (yes (recommended), no): " answer
-    if [[ "$answer" == "yes" || "$answer" == "y" ]]; then
+    if [ "$answer" == "yes"] || [ "$answer" == "y" ]; then
         sudo xbps-install -Sy pulseaudio
         sudo ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart/
     fi
