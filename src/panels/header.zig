@@ -3,11 +3,11 @@ const vaxis = @import("vaxis");
 const other_bg = @import("../style.zig").other_bg;
 
 const logo =
-    \\:::  === :::====  ::: :::====       :::====  ::: :::      :::====  :::====
-    \\:::  === :::  === ::: :::  ===      :::  === ::: :::      :::  === :::====
-    \\===  === ===  === === ===  ===      =======  === ===      ===  ===   ===
-    \\ ======  ===  === === ===  ===      ===      === ===      ===  ===   ===
-    \\   ==     ======  === =======       ===      === ========  ======    ===
+    \\===  ===  ======  === =======       =======  === ===       ======  =========
+    \\===  === ===  === === ===  ===      ===  === === ===      ===  === =========
+    \\===  === ===  === === ===  ===      =======  === ===      ===  ===    ===
+    \\ ======  ===  === === ===  ===      ===      === ===      ===  ===    ===
+    \\   ==     ======  === =======       ===      === ========  ======     ===
     \\
     \\
 ;
@@ -16,7 +16,7 @@ const title_logo = vaxis.Cell.Segment{
     .style = .{},
 };
 const title_info = vaxis.Cell.Segment{
-    .text = "Easily install/uninstall packages and manage your void distro \n",
+    .text = "Easily install packages and manage your Void Linux distro \n",
     .style = .{},
 };
 const title_disclaimer = vaxis.Cell.Segment{
