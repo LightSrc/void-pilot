@@ -5,6 +5,7 @@ pub const MenuState = enum {
     audioVideoMenu,
     browsersMenu,
     codeEditorsMenu,
+    desktopEnvsMenu,
     gameLaunchersMenu,
     messagingMenu,
     terminalsMenu,

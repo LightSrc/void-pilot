@@ -27,7 +27,7 @@ pub const menuCollection = [_]MenuList{
             },
             .{
                 .title = "Install Desktop Environments",
-                .child = null,
+                .child = .desktopEnvsMenu,
                 .xbps_script = null,
                 .flatpak_script = null,
             },
@@ -388,6 +388,24 @@ pub const menuCollection = [_]MenuList{
         },
         .state = .codeEditorsMenu,
         .parent = .appMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Install GNOME",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/desktopEnvs/gnome.sh"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install KDE",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/desktopEnvs/kde.sh"},
+                .flatpak_script = null,
+            },
+        },
+        .state = .desktopEnvsMenu,
+        .parent = .mainMenu,
     },
     .{
         .items = &[_]InstallMenu{
