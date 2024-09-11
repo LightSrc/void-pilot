@@ -21,7 +21,7 @@ pub const menuCollection = [_]MenuList{
             },
             .{
                 .title = "Install Drivers",
-                .child = null,
+                .child = .driversMenu,
                 .xbps_script = null,
                 .flatpak_script = null,
             },
@@ -405,6 +405,42 @@ pub const menuCollection = [_]MenuList{
             },
         },
         .state = .desktopEnvsMenu,
+        .parent = .mainMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Install AMD GPU Driver",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/drivers/amd_video.sh"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Intel GPU Driver",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/drivers/intel_video.sh"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Nvidia (Series 800+) GPU Driver",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/drivers/nvidia_video.sh"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Nvidia (Series 600/700) GPU Driver",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/drivers/nvidia470_video.sh"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Nvidia (Series 400/500) GPU Driver",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/drivers/nvidia390_video.sh"},
+                .flatpak_script = null,
+            },
+        },
+        .state = .driversMenu,
         .parent = .mainMenu,
     },
     .{
