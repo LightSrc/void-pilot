@@ -19,14 +19,20 @@ if [ "$answer" = "yes" ] || [ "$answer" = "y" ]; then
     sudo xbps-install -Sy gnome-apps
 fi
 
-sudo ln -s /etc/sv/NetworkManager /var/service
-sudo ln -s /etc/sv/dbus /var/service
+if [ ! -e /var/service/NetworkManager ]; then
+    sudo ln -s /etc/sv/NetworkManager /var/service
+fi
+if [ ! -e /var/service/dbus ]; then
+    sudo ln -s /etc/sv/dbus /var/service
+fi
 
 if [ ! $(isPulseAudioInstalled) ]; then
     read -p "Do you want to install pulseaudio? (yes (recommended), no): " answer
     if [ "$answer" = "yes" ] || [ "$answer" = "y" ]; then
         sudo xbps-install -Sy pulseaudio
-        sudo ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart/
+        if [ ! -e /etc/xdg/autostart/pipewire.desktop ]; then
+            sudo ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart/
+        fi
     fi
 fi
 
@@ -35,11 +41,15 @@ if [ ! $(isGdmInstalled) ] && ! [ $(isSddmInstalled) ]; then
 
     if [ "$answer" == "sddm" ]; then
         sudo xbps-install -Sy sddm
-        sudo ln -s /etc/sv/sddm /var/service
+        if [ ! -e /var/service/sddm ]; then
+            sudo ln -s /etc/sv/sddm /var/service
+        fi
     fi
 
     if [ "$answer" == "gdm" ]; then
         sudo xbps-install -Sy gdm
-        sudo ln -s /etc/sv/gdm /var/service
+        if [ ! -e /var/service/gdm ]; then
+            sudo ln -s /etc/sv/gdm /var/service
+        fi
     fi
 fi
