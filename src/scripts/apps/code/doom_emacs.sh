@@ -11,7 +11,7 @@ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 read -p "Do you want to add Doom to the PATH? (yes(recommended) / no): " answer
 
 # Check the user's response
-if [ "$answer" == "yes"] || [ "$answer" == "y" ]; then
+if [ "$answer" = "yes" ] || [ "$answer" = "y" ]; then
     # Add Doom to the PATH for the current session
     export PATH="$HOME/.config/emacs/bin:$PATH"
 
