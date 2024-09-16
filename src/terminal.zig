@@ -3,6 +3,7 @@ const vaxis = @import("vaxis");
 const memoryModule = @import("memory.zig");
 const mainModule = @import("main.zig");
 const menu = @import("panels/menu.zig");
+const other_bg = @import("style.zig").other_bg;
 
 var terminal_: ?vaxis.widgets.Terminal = null;
 var terminal_exited: bool = false;
@@ -79,6 +80,31 @@ pub fn draw() !void {
         .y_pixel = 0,
     });
     try terminal_.?.draw(child);
+    try drawTitle(&menu.menuWindow.window);
+}
+
+fn drawTitle(child: *const vaxis.Window) !void {
+    const text = getTitle();
+    const title_disclaimer = vaxis.Cell.Segment{
+        .text = text,
+        .style = .{},
+    };
+    var title_segs = [_]vaxis.Cell.Segment{title_disclaimer};
+    const theChild = child.*.initChild(
+        (child.width / 2) - text.len,
+        1,
+        .{ .limit = child.*.width },
+        .{ .limit = child.*.height / 2 },
+    );
+    _ = try theChild.print(title_segs[0..], .{ .wrap = .word });
+}
+
+fn getTitle() []const u8 {
+    if (terminal_exited) {
+        return "Press <ENTER> to close this window";
+    }
+
+    return "Press <CTRL+ENTER> to cancel this script";
 }
 
 pub fn refresh() !void {
