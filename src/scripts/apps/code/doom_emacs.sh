@@ -3,7 +3,7 @@
 # Installing prerequisites
 sudo xbps-install -Sy git emacs ripgrep fd
 
-# # Installing Doom Emacs
+# Installing Doom Emacs
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install
 
