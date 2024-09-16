@@ -7,6 +7,7 @@ const terminalModule = @import("terminal.zig");
 const keysHandler = @import("keysHandler.zig");
 const header = @import("panels/header.zig");
 const menu = @import("panels/menu.zig");
+const keybindings = @import("panels/keybindings.zig");
 
 pub var vx: vaxis.Vaxis = undefined;
 
@@ -57,6 +58,7 @@ pub fn main() !void {
         header.drawHeader(&win);
         try menu.drawMenu(&win);
         try terminalModule.draw();
+        try keybindings.drawKeybindings(&win);
 
         try vx.render(tty.anyWriter());
     }

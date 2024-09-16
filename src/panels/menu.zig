@@ -68,6 +68,10 @@ pub fn drawMenu(win: *const vaxis.Window) !void {
     );
 }
 
+pub fn isMenuActive() bool {
+    return menuTable.active;
+}
+
 pub fn onSelectAction() !void {
     const id: u64 = menuTable.row;
     if (lastActiveMenu_ != null) {
