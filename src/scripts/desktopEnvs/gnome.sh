@@ -39,14 +39,14 @@ fi
 if [ ! $(isGdmInstalled) ] && ! [ $(isSddmInstalled) ]; then
     read -p "Do you want to install Display Manager? (gdm (recommended), sddm or press ENTER if none of these): " answer
 
-    if [ "$answer" == "sddm" ]; then
+    if [ "$answer" = "sddm" ]; then
         sudo xbps-install -Sy sddm
         if [ ! -e /var/service/sddm ]; then
             sudo ln -s /etc/sv/sddm /var/service
         fi
     fi
 
-    if [ "$answer" == "gdm" ]; then
+    if [ "$answer" = "gdm" ]; then
         sudo xbps-install -Sy gdm
         if [ ! -e /var/service/gdm ]; then
             sudo ln -s /etc/sv/gdm /var/service

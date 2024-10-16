@@ -26,16 +26,21 @@ pub fn drawKeybindings(win: *const vaxis.Window) !void {
     for (bindings_segs) |seg| {
         segs_text_len += seg.text.len;
     }
-    const child = win.*.initChild(
-        0,
-        win.*.height - 1,
-        .{ .limit = win.*.width },
-        .{ .limit = win.*.height / 2 },
-    );
+    const width = .{ .limit = win.*.width };
+    const height = .{ .limit = win.*.height / 2 };
+    const x_off = 0;
+    const y_off = win.*.height - 1;
+
+    const child = win.*.child(.{
+        .width = width,
+        .height = height,
+        .x_off = x_off,
+        .y_off = y_off,
+    });
     const center_window = vaxis.widgets.alignment.center(
         child,
         segs_text_len,
         child.height,
     );
-    _ = try center_window.print(bindings_segs[0..], .{ .wrap = .none });
+    _ = center_window.print(bindings_segs[0..], .{ .wrap = .none });
 }

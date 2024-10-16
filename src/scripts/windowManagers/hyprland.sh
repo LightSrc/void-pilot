@@ -8,13 +8,15 @@ else
     echo "repository=$REPOSITORY" | sudo tee $REPO_FILE
 fi
 
-sudo xbps-install -Sy hyprland
+sudo xbps-install -Sy hyprland xdg-desktop-portal-hyprland
 
 isGdmInstalled() {
-    which gdm >/dev/null 2>&1
+    [ -x "$(command -v gdm)" ]
+    return $?
 }
 isSddmInstalled() {
-    which sddm >/dev/null 2>&1
+    [ -x "$(command -v sddm)" ]
+    return $?
 }
 isHyprpaperInstalled(){
     which hyprpaper >/dev/null 2>&1
@@ -35,17 +37,17 @@ isWofiInstalled(){
     which wofi >/dev/null 2>&1
 }
 
-if [ ! $(isGdmInstalled) ] && ! [ $(isSddmInstalled) ]; then
-    read -p "Do you want to install Display Manager? (gdm, sddm or press ENTER if none of these): " answer
+if [ ! "$(isGdmInstalled)" ] && [ ! "$(isSddmInstalled)" ]; then
+    read -p "Do you want to install display manager? (gdm, sddm or press ENTER if none of these): " answer
 
-    if [ "$answer" == "sddm" ]; then
+    if [ "$answer" = "sddm" ]; then
         sudo xbps-install -Sy sddm
         if [ ! -e /var/service/sddm ]; then
             sudo ln -s /etc/sv/sddm /var/service
         fi
     fi
 
-    if [ "$answer" == "gdm" ]; then
+    if [ "$answer" = "gdm" ]; then
         sudo xbps-install -Sy gdm
         if [ ! -e /var/service/gdm ]; then
             sudo ln -s /etc/sv/gdm /var/service
@@ -53,16 +55,42 @@ if [ ! $(isGdmInstalled) ] && ! [ $(isSddmInstalled) ]; then
     fi
 fi
 
-if [ ! $(isHyperPaperInstalled) ]; then
+if [ ! $(isHyprpaperInstalled) ]; then
     read -p "Do you want to install hyprpaper? (yes, no): " answer
-    if [ "$answer" == "yes" ] || [ "$answer" == "y" ]; then
+    if [ "$answer" = "yes" ] || [ "$answer" = "y" ]; then
         sudo xbps-install -Sy hyprpaper
     fi
 fi
 
-if [ ! $(isHyperPaperInstalled) ]; then
-    read -p "Do you want to install hyprpaper? (yes, no): " answer
-    if [ "$answer" == "yes" ] || [ "$answer" == "y" ]; then
-        sudo xbps-install -Sy hyprpaper
+if [ ! $(isHyprcursorInstalled) ]; then
+    read -p "Do you want to install hyprcursor? (yes, no): " answer
+    if [ "$answer" = "yes" ] || [ "$answer" = "y" ]; then
+        sudo xbps-install -Sy hyprcursor
+    fi
+fi
+
+if [ ! $(isHypridleInstalled) ]; then
+    read -p "Do you want to install hypridle? (yes, no): " answer
+    if [ "$answer" = "yes" ] || [ "$answer" = "y" ]; then
+        sudo xbps-install -Sy hypridle
+    fi
+fi
+
+if [ ! $(isWaybarInstalled) ]; then
+    read -p "Do you want to install waybar? (yes, no): " answer
+    if [ "$answer" = "yes" ] || [ "$answer" = "y" ]; then
+        sudo xbps-install -Sy Waybar
+    fi
+fi
+
+if [ ! $(isRofiInstalled) ] && ! [ $(isWofiInstalled) ]; then
+    read -p "Do you want to install application launcher? (rofi, wofi or press ENTER if none of these): " answer
+
+    if [ "$answer" = "rofi" ]; then
+        sudo xbps-install -Sy rofi
+    fi
+
+    if [ "$answer" = "wofi" ]; then
+        sudo xbps-install -Sy wofi
     fi
 fi

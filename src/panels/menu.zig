@@ -29,13 +29,17 @@ var lastActiveMenu_: ?MenuState = null;
 var lastActiveMenuIdx_: u64 = 0;
 
 pub fn init(win: *const vaxis.Window) MenuWindow {
+    const width = .{ .limit = win.*.width };
+    const height = .{ .limit = win.*.height - (win.*.height / 6 + 1) };
+    const x_off = 0;
+    const y_off = 11;
     return .{
-        .window = win.initChild(
-            0,
-            win.height / 6,
-            .{ .limit = win.width },
-            .{ .limit = win.height - (win.height / 6 + 1) },
-        ),
+        .window = win.child(.{
+            .width = width,
+            .height = height,
+            .x_off = x_off,
+            .y_off = y_off,
+        }),
     };
 }
 

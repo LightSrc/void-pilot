@@ -33,7 +33,7 @@ pub const menuCollection = [_]MenuList{
             },
             .{
                 .title = "Install Window Managers",
-                .child = null,
+                .child = .windowManagersMenu,
                 .xbps_script = null,
                 .flatpak_script = null,
             },
@@ -405,6 +405,18 @@ pub const menuCollection = [_]MenuList{
             },
         },
         .state = .desktopEnvsMenu,
+        .parent = .mainMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Install Hyprland",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/windowManagers/hyprland.sh"},
+                .flatpak_script = null,
+            },
+        },
+        .state = .windowManagersMenu,
         .parent = .mainMenu,
     },
     .{

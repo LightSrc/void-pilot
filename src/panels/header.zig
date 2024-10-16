@@ -26,12 +26,16 @@ const title_disclaimer = vaxis.Cell.Segment{
 var title_segs = [_]vaxis.Cell.Segment{ title_logo, title_info, title_disclaimer };
 
 pub fn drawHeader(win: *const vaxis.Window) void {
-    const top_bar = win.initChild(
-        0,
-        0,
-        .{ .limit = win.width },
-        .{ .limit = win.height / 6 },
-    );
+    const width = .{ .limit = win.*.width };
+    const height = .{ .limit = 14 };
+    const x_off = 0;
+    const y_off = 0;
+    const top_bar = win.child(.{
+        .width = width,
+        .height = height,
+        .x_off = x_off,
+        .y_off = y_off,
+    });
     for (title_segs[0..]) |*title_seg| {
         title_seg.*.style.bg = other_bg;
     }
@@ -41,5 +45,5 @@ pub fn drawHeader(win: *const vaxis.Window) void {
         77,
         top_bar.height - (top_bar.height / 3),
     );
-    _ = try logo_bar.print(title_segs[0..], .{ .wrap = .word });
+    _ = logo_bar.print(title_segs[0..], .{ .wrap = .word });
 }

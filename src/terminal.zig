@@ -89,13 +89,17 @@ fn drawTitle(win: *const vaxis.Window) !void {
         .style = .{},
     };
     var title_segs = [_]vaxis.Cell.Segment{title_seg};
-    const child = win.*.initChild(
-        (win.width / 2) - text.len,
-        1,
-        .{ .limit = win.*.width },
-        .{ .limit = win.*.height / 2 },
-    );
-    _ = try child.print(title_segs[0..], .{ .wrap = .word });
+    const width = .{ .limit = win.*.width };
+    const height = .{ .limit = win.*.height / 2 };
+    const x_off = (win.*.width / 2) - text.len;
+    const y_off = 0;
+    const child = win.*.child(.{
+        .width = width,
+        .height = height,
+        .x_off = x_off,
+        .y_off = y_off,
+    });
+    _ = child.print(title_segs[0..], .{ .wrap = .word });
 }
 
 fn getTitle() []const u8 {
