@@ -90,9 +90,9 @@ fn drawTitle(win: *const vaxis.Window) !void {
     };
     var title_segs = [_]vaxis.Cell.Segment{title_seg};
     const width = .{ .limit = win.*.width };
-    const height = .{ .limit = win.*.height / 2 };
-    const x_off = (win.*.width / 2) - text.len;
-    const y_off = 0;
+    const height = .{ .limit = win.*.height };
+    const x_off = (win.*.width / 2) - text.len / 2;
+    const y_off = 1;
     const child = win.*.child(.{
         .width = width,
         .height = height,
