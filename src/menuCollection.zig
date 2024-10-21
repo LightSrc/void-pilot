@@ -43,6 +43,12 @@ pub const menuCollection = [_]MenuList{
                 .xbps_script = null,
                 .flatpak_script = null,
             },
+            .{
+                .title = "Purge old kernels",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/purge-kernels.sh"},
+                .flatpak_script = null,
+            },
         },
         .state = .mainMenu,
         .parent = null,
