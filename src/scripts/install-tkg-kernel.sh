@@ -26,7 +26,7 @@ esac
 
 sudo xbps-install -S git
 cd ~/
-if [ ! -d ~/linux-tkg]; then
+if [ ! -d ~/linux-tkg ]; then
     git clone https://github.com/Frogging-Family/linux-tkg.git
 fi
 cd linux-tkg
