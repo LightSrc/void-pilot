@@ -25,15 +25,18 @@ case $answer in
 esac
 
 sudo xbps-install -S git
-git clone https://github.com/Frogging-Family/linux-tkg.git
+cd ~/
+if [ ! -d ~/linux-tkg]; then
+    git clone https://github.com/Frogging-Family/linux-tkg.git
+fi
 cd linux-tkg
 sed -i 's/_distro=""/_distro="Generic"/' customization.cfg
 sed -i 's/_configfile=""/_configfile="running-kernel"/' customization.cfg
-echo "You have now time to edit customization.cfg if you know what you are doing or just press y to continue without editing"
+echo "Edit customization.cfg if you know what you are doing"
 echo "DONT CHANGE _distro and _configfile variables"
 echo "vim ~/linux-tkg/customization.cfg"
 echo ""
-echo "Do you want to continue? (y/n)"
+echo "Do you want to continue or still editing customization.cfg? (y/n)"
 read answer
 case $answer in
     y|Y)
@@ -50,7 +53,6 @@ case $answer in
 esac
 
 echo "Updating system and Installing packages which are needed to compile kernel"
-sleep 1
 sudo xbps-install -Su
 sudo xbps-install make gcc bc bison perl wget curl ccache elfutils elfutils-devel flex git libXi-devel lz4 ncurses-devel openssl openssl-devel python3-devel schedtool zstd rsync libstdc++ pahole cpio fakeroot kmod inetutils xmlto docbook-xsl patchutils graphviz ImageMagick tar xz llvm clang lld
 ./install.sh install
