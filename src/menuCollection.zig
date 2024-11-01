@@ -44,9 +44,9 @@ pub const menuCollection = [_]MenuList{
                 .flatpak_script = null,
             },
             .{
-                .title = "Purge old kernels",
-                .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/purge-kernels.sh"},
+                .title = "Kernel",
+                .child = .kernelMenu,
+                .xbps_script = null,
                 .flatpak_script = null,
             },
         },
@@ -459,6 +459,24 @@ pub const menuCollection = [_]MenuList{
             },
         },
         .state = .driversMenu,
+        .parent = .mainMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Compile And Install Tkg Gaming Kernel (For Advanced Users)",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/install-tkg-kernel.sh"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Purge old kernels",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/purge-kernels.sh"},
+                .flatpak_script = null,
+            },
+        },
+        .state = .kernelMenu,
         .parent = .mainMenu,
     },
     .{

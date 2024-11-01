@@ -10,6 +10,7 @@ pub const MenuState = enum {
     driversMenu,
     gameLaunchersMenu,
     messagingMenu,
+    kernelMenu,
     terminalsMenu,
     xbpsOrFlatpak,
 };
