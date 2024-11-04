@@ -32,6 +32,8 @@ fi
 cd linux-tkg
 sed -i 's/_distro=""/_distro="Generic"/' customization.cfg
 sed -i 's/_configfile=""/_configfile="running-kernel"/' customization.cfg
+sed -i 's/_dracut_options="--lz4"/_dracut_options="--lz4 --no-uefi --no-machineid"/' customization.cfg
+echo ""
 echo "Edit customization.cfg if you know what you are doing"
 echo "DONT CHANGE _distro and _configfile variables"
 echo "vim ~/linux-tkg/customization.cfg"
@@ -54,7 +56,7 @@ esac
 
 echo "Updating system and Installing packages which are needed to compile kernel"
 sudo xbps-install -Su
-sudo xbps-install make gcc bc bison perl wget curl ccache elfutils elfutils-devel flex git libXi-devel lz4 ncurses-devel openssl openssl-devel python3-devel schedtool zstd rsync libstdc++ pahole cpio fakeroot kmod inetutils xmlto docbook-xsl patchutils graphviz ImageMagick tar xz llvm clang lld
+sudo xbps-install patch make gcc bc bison perl wget curl ccache elfutils elfutils-devel flex git libXi-devel lz4 ncurses-devel openssl openssl-devel python3-devel schedtool zstd rsync libstdc++ pahole cpio fakeroot kmod inetutils xmlto docbook-xsl patchutils graphviz ImageMagick tar xz llvm clang lld
 ./install.sh install
 
 if [ -f /boot/vmlinuz ]; then
