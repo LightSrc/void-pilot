@@ -26,7 +26,7 @@ if [ ! -e /var/service/dbus ]; then
     sudo ln -s /etc/sv/dbus /var/service
 fi
 
-if [ ! $(isPulseAudioInstalled) ]; then
+if ! isPulseAudioInstalled; then
     read -p "Do you want to install pulseaudio? (yes (recommended), no): " answer
     if [ "$answer" = "yes" ] || [ "$answer" = "y" ]; then
         sudo xbps-install -Sy pulseaudio
@@ -36,7 +36,7 @@ if [ ! $(isPulseAudioInstalled) ]; then
     fi
 fi
 
-if [ ! $(isGdmInstalled) ] && ! [ $(isSddmInstalled) ]; then
+if ! isGdmInstalled && ! isSddmInstalled; then
     read -p "Do you want to install display manager? (gdm (recommended), sddm or press ENTER if none of these): " answer
 
     if [ "$answer" = "sddm" ]; then
@@ -53,3 +53,5 @@ if [ ! $(isGdmInstalled) ] && ! [ $(isSddmInstalled) ]; then
         fi
     fi
 fi
+
+echo "KDE successfully installed"
