@@ -22,7 +22,7 @@ isHyprpaperInstalled(){
     which hyprpaper >/dev/null 2>&1
 }
 isHyprcursorInstalled(){
-    which hyprcursor >/dev/null 2>&1
+    xbps-query -l | grep -q hyprcursor
 }
 isHypridleInstalled(){
     which hypridle >/dev/null 2>&1
@@ -37,7 +37,7 @@ isWofiInstalled(){
     which wofi >/dev/null 2>&1
 }
 
-if [ ! "$(isGdmInstalled)" ] && [ ! "$(isSddmInstalled)" ]; then
+if ! isGdmInstalled && ! isSddmInstalled; then
     read -p "Do you want to install display manager? (gdm, sddm or press ENTER if none of these): " answer
 
     if [ "$answer" = "sddm" ]; then
@@ -55,35 +55,35 @@ if [ ! "$(isGdmInstalled)" ] && [ ! "$(isSddmInstalled)" ]; then
     fi
 fi
 
-if [ ! $(isHyprpaperInstalled) ]; then
+if ! isHyprpaperInstalled; then
     read -p "Do you want to install hyprpaper? (yes, no): " answer
     if [ "$answer" = "yes" ] || [ "$answer" = "y" ]; then
         sudo xbps-install -Sy hyprpaper
     fi
 fi
 
-if [ ! $(isHyprcursorInstalled) ]; then
+if ! isHyprcursorInstalled; then
     read -p "Do you want to install hyprcursor? (yes, no): " answer
     if [ "$answer" = "yes" ] || [ "$answer" = "y" ]; then
         sudo xbps-install -Sy hyprcursor
     fi
 fi
 
-if [ ! $(isHypridleInstalled) ]; then
+if ! isHypridleInstalled; then
     read -p "Do you want to install hypridle? (yes, no): " answer
     if [ "$answer" = "yes" ] || [ "$answer" = "y" ]; then
         sudo xbps-install -Sy hypridle
     fi
 fi
 
-if [ ! $(isWaybarInstalled) ]; then
+if ! isWaybarInstalled; then
     read -p "Do you want to install waybar? (yes, no): " answer
     if [ "$answer" = "yes" ] || [ "$answer" = "y" ]; then
         sudo xbps-install -Sy Waybar
     fi
 fi
 
-if [ ! $(isRofiInstalled) ] && ! [ $(isWofiInstalled) ]; then
+if ! isRofiInstalled && ! isWofiInstalled; then
     read -p "Do you want to install application launcher? (rofi, wofi or press ENTER if none of these): " answer
 
     if [ "$answer" = "rofi" ]; then
