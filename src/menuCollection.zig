@@ -39,7 +39,7 @@ pub const menuCollection = [_]MenuList{
             },
             .{
                 .title = "Install Developer Tools",
-                .child = null,
+                .child = .developerToolsMenu,
                 .xbps_script = null,
                 .flatpak_script = null,
             },
@@ -502,6 +502,18 @@ pub const menuCollection = [_]MenuList{
         },
         .state = .kernelMenu,
         .parent = .mainMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Install .NET SDK",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/developerTools/dotnet-sdk.sh"},
+                .flatpak_script = null,
+            },
+        },
+        .state = .developerToolsMenu,
+        .parent = null,
     },
     .{
         .items = &[_]InstallMenu{
