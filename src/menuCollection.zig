@@ -464,6 +464,30 @@ pub const menuCollection = [_]MenuList{
     .{
         .items = &[_]InstallMenu{
             .{
+                .title = "Install Linux Kernel 6.12",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "linux6.12"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Linux Kernel 6.11",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "linux6.11"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Linux Kernel 6.6",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "linux6.6"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Linux Kernel 6.1",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "linux6.1"},
+                .flatpak_script = null,
+            },
+            .{
                 .title = "Compile And Install Tkg Gaming Kernel (For Advanced Users)",
                 .child = null,
                 .xbps_script = &[_][]const u8{"./scripts/install-tkg-kernel.sh"},
