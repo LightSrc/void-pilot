@@ -11,8 +11,20 @@ for kernel in $deleteable_kernels; do
     i=$((i+1))
 done
 
-echo "Enter the number of the kernel you want to purge:"
+echo "Enter the number of the kernel you want to purge or type 'A' to purge them all:"
 read number
+
+set -- $kernels
+if [ $number = "a" ] || [ $number = "A" ]; then
+    while [ $# -gt 0 ]; do
+        kernel_to_purge=$2
+        shift 2
+        echo "Purging kernel $kernel_to_purge"
+        sudo vkpurge rm "$kernel_to_purge"
+    done
+    echo "All kernels successfully purged"
+    exit 0
+fi
 
 # Check if input is a valid number
 if ! [ "$number" -eq "$number" ] 2>/dev/null; then
@@ -21,7 +33,6 @@ if ! [ "$number" -eq "$number" ] 2>/dev/null; then
 fi
 
 # Check if input is valid and then delete the chosen kernel
-set -- $kernels
 while [ $# -gt 0 ]; do
     current_number=$1
     current_kernel=$2
