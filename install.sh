@@ -21,7 +21,7 @@ chmod +x void-pilot
 echo "Do you want to add void-pilot to your PATH? yes(recommended), no"
 read add_to_path_answer
 
-if [ $add_to_path_answer = "y" ] || [ $add_to_path_answer = "yes" ]; then
+if [ "$add_to_path_answer" = "y" ] || [ "$add_to_path_answer" = "yes" ]; then
     if [ -f ~/.bashrc ]; then
         if [ "$(bashrc_contains_void_pilot_path)" = "False" ]; then
             echo 'export PATH=$HOME/void-pilot:$PATH' >> ~/.bashrc
