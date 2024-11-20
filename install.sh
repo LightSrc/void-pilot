@@ -14,7 +14,7 @@ if ! findArch; then
 fi
 
 zshrc_contains_void_pilot_path() {
-    if grep -q '^export PATH=$CURRENT_WORK_DIR/void-pilot:$PATH$' ~/.zshrc; then
+    if grep -q "^export PATH=$CURRENT_WORK_DIR/void-pilot:\$PATH$" ~/.zshrc; then
         echo True
     else
         echo False
@@ -22,7 +22,7 @@ zshrc_contains_void_pilot_path() {
 }
 
 bashrc_contains_void_pilot_path() {
-    if grep -q '^export PATH=$CURRENT_WORK_DIR/void-pilot:$PATH$' ~/.bashrc; then
+    if grep -q "^export PATH=$CURRENT_WORK_DIR/void-pilot:\$PATH$" ~/.bashrc; then
         echo True
     else
         echo False
@@ -37,7 +37,7 @@ chmod +x void-pilot
 
 if [ -f ~/.bashrc ]; then
     if [ "$(bashrc_contains_void_pilot_path)" = "False" ]; then
-        echo 'export PATH=$CURRENT_WORK_DIR/void-pilot:$PATH' >> ~/.bashrc
+        echo "export PATH=$CURRENT_WORK_DIR/void-pilot:\$PATH" >> ~/.bashrc
         bash -c 'source ~/.bashrc'
     else
         echo ".bashrc already contains PATH for void-pilot, skipping..."
@@ -46,7 +46,7 @@ fi
 
 if [ -f ~/.zshrc ]; then
     if [ "$(zshrc_contains_void_pilot_path)" = "False" ]; then
-        echo 'export PATH=$CURRENT_WORK_DIR/void-pilot:$PATH' >> ~/.zshrc
+        echo "export PATH=$CURRENT_WORK_DIR/void-pilot:\$PATH" >> ~/.zshrc
         bash -c 'source ~/.zshrc'
     else
         echo ".zshrc already contains PATH for void-pilot, skipping..."
