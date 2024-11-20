@@ -44,6 +44,12 @@ pub const menuCollection = [_]MenuList{
                 .flatpak_script = null,
             },
             .{
+                .title = "Gaming",
+                .child = .gamingMenu,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
                 .title = "Kernel",
                 .child = .kernelMenu,
                 .xbps_script = null,
@@ -506,14 +512,86 @@ pub const menuCollection = [_]MenuList{
     .{
         .items = &[_]InstallMenu{
             .{
+                .title = "Install IDEs",
+                .child = .codeEditorsMenu,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
                 .title = "Install .NET SDK",
                 .child = null,
                 .xbps_script = &[_][]const u8{"./scripts/developerTools/dotnet-sdk.sh"},
                 .flatpak_script = null,
             },
+            .{
+                .title = "Install Go",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "go"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install NodeJS (via NVM)",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/developerTools/nvm.sh"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Python (v2)",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "python"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Python3",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "python3"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Ruby",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "ruby"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Rust",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/developerTools/rust.sh"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Zig",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/developerTools/zig.sh"},
+                .flatpak_script = null,
+            },
         },
         .state = .developerToolsMenu,
-        .parent = null,
+        .parent = .mainMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Install Gamemode",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "gamemode"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Game Launchers",
+                .child = .gameLaunchersMenu,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install MangoHud",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "MangoHud"},
+                .flatpak_script = null,
+            },
+        },
+        .state = .gamingMenu,
+        .parent = .mainMenu,
     },
     .{
         .items = &[_]InstallMenu{
