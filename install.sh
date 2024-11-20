@@ -32,7 +32,7 @@ if [ $add_to_path_answer = "y" ] || [ $add_to_path_answer = "yes" ]; then
     fi
 
     if [ -f ~/.zshrc ]; then
-        if [ ! zshrc_contains_dotnet_root ]; then
+        if [ ! zshrc_contains_void_pilot_path ]; then
             echo 'export PATH=$HOME/void-pilot:$PATH' >> ~/.zshrc
             bash -c 'source ~/.zshrc'
         else
