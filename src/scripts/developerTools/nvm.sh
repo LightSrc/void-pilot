@@ -14,22 +14,22 @@ selected_version=""
 
 case $selected_number in
     1)
-        selected_version = 18
+        selected_version=18
         ;;
     2)
-        selected_version = 19
+        selected_version=19
         ;;
     3)
-        selected_version = 20
+        selected_version=20
         ;;
     4)
-        selected_version = 21
+        selected_version=21
         ;;
     5)
-        selected_version = 22
+        selected_version=22
         ;;
     6)
-        selected_version = 23
+        selected_version=23
         ;;
     *)
         echo "Selected wrong number! Exiting script..."
