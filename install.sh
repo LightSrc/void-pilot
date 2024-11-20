@@ -13,6 +13,22 @@ if ! findArch; then
     exit 1
 fi
 
+zshrc_contains_void_pilot_path() {
+    if grep -q '^export PATH=$CURRENT_WORK_DIR/void-pilot:$PATH$' ~/.zshrc; then
+        echo True
+    else
+        echo False
+    fi
+}
+
+bashrc_contains_void_pilot_path() {
+    if grep -q '^export PATH=$CURRENT_WORK_DIR/void-pilot:$PATH$' ~/.bashrc; then
+        echo True
+    else
+        echo False
+    fi
+}
+
 curl -fsSL "$DOWNLOAD_URL" -o void-pilot-x86_64-linux.tar.gz
 tar xfz "void-pilot-x86_64-linux.tar.gz"
 rm void-pilot-x86_64-linux.tar.gz
@@ -38,19 +54,3 @@ if [ -f ~/.zshrc ]; then
 fi
 
 ./void-pilot
-
-zshrc_contains_void_pilot_path() {
-    if grep -q '^export PATH=$CURRENT_WORK_DIR/void-pilot:$PATH$' ~/.zshrc; then
-        echo True
-    else
-        echo False
-    fi
-}
-
-bashrc_contains_void_pilot_path() {
-    if grep -q '^export PATH=$CURRENT_WORK_DIR/void-pilot:$PATH$' ~/.bashrc; then
-        echo True
-    else
-        echo False
-    fi
-}
