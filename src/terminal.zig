@@ -65,19 +65,13 @@ pub fn draw() !void {
     const child = menu.menuWindow.window.child(.{
         .x_off = 4,
         .y_off = 2,
-        .width = .{ .limit = menu.menuWindow.window.width - 8 },
-        .height = .{ .limit = menu.menuWindow.window.width - 6 },
+        .width = menu.menuWindow.window.width - 8,
+        .height = menu.menuWindow.window.width - 6,
         .border = .{
             .where = .all,
         },
     });
 
-    try terminal_.?.resize(.{
-        .rows = child.height,
-        .cols = child.width,
-        .x_pixel = 0,
-        .y_pixel = 0,
-    });
     try terminal_.?.draw(child);
     try drawTitle(&menu.menuWindow.window);
 }
@@ -89,9 +83,10 @@ fn drawTitle(win: *const vaxis.Window) !void {
         .style = .{},
     };
     var title_segs = [_]vaxis.Cell.Segment{title_seg};
-    const width = .{ .limit = win.*.width };
-    const height = .{ .limit = win.*.height };
-    const x_off = (win.*.width / 2) - text.len / 2;
+    const width = win.*.width;
+    const height = win.*.height;
+    const len: i17 = @intCast(text.len / 2);
+    const x_off: i17 = @as(i17, (win.*.width / 2)) - len;
     const y_off = 1;
     const child = win.*.child(.{
         .width = width,

@@ -22,12 +22,13 @@ pub fn drawKeybindings(win: *const vaxis.Window) !void {
     };
     var bindings_segs = [_]vaxis.Cell.Segment{ next_seg, prev_seg, select_seg, back_seg };
 
-    var segs_text_len: usize = 0;
+    var segs_text_len: u16 = 0;
     for (bindings_segs) |seg| {
-        segs_text_len += seg.text.len;
+        const len: u16 = @intCast(seg.text.len);
+        segs_text_len += len;
     }
-    const width = .{ .limit = win.*.width };
-    const height = .{ .limit = win.*.height / 2 };
+    const width = win.*.width;
+    const height = win.*.height / 2;
     const x_off = 0;
     const y_off = win.*.height - 1;
 

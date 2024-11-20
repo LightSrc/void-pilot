@@ -26,8 +26,8 @@ const title_disclaimer = vaxis.Cell.Segment{
 var title_segs = [_]vaxis.Cell.Segment{ title_logo, title_info, title_disclaimer };
 
 pub fn drawHeader(win: *const vaxis.Window) void {
-    const width = .{ .limit = win.*.width };
-    const height = .{ .limit = 14 };
+    const width = win.*.width;
+    const height = 14;
     const x_off = 0;
     const y_off = 0;
     const top_bar = win.child(.{

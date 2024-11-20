@@ -26,11 +26,11 @@ pub var menuTable: vaxis.widgets.Table.TableContext = .{
 
 var titles_ = std.ArrayList(SelectMenu).init(memoryModule.alloc);
 var lastActiveMenu_: ?MenuState = null;
-var lastActiveMenuIdx_: u64 = 0;
+var lastActiveMenuIdx_: u16 = 0;
 
 pub fn init(win: *const vaxis.Window) MenuWindow {
-    const width = .{ .limit = win.*.width };
-    const height = .{ .limit = win.*.height - (win.*.height / 6 + 1) };
+    const width = win.*.width;
+    const height = win.*.height - (win.*.height / 6 + 1);
     const x_off = 0;
     const y_off = 11;
     return .{
