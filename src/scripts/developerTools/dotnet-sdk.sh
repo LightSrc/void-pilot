@@ -28,7 +28,20 @@ wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
 chmod +x ./dotnet-install.sh
 ./dotnet-install.sh --channel $channel
 
-rm dotnet-install.sh
+zshrc_contains_dotnet_root() {
+    if grep -q '^export DOTNET_ROOT=$HOME/.dotnet$' ~/.zshrc; then
+        echo True
+    else
+        echo False
+    fi
+}
+bashrc_contains_dotnet_root() {
+    if grep -q '^export DOTNET_ROOT=$HOME/.dotnet$' ~/.bashrc; then
+        echo True
+    else
+        echo False
+    fi
+}
 
 if [ -f ~/.bashrc ]; then
     if [ "$(bashrc_contains_dotnet_root)" = "False" ]; then
@@ -51,19 +64,3 @@ if [ -f ~/.zshrc ]; then
 fi
 
 echo ".NET $channel SDK is successfully installed"
-
-zshrc_contains_dotnet_root() {
-    if grep -q '^export DOTNET_ROOT=$HOME/.dotnet$' ~/.zshrc; then
-        echo True
-    else
-        echo False
-    fi
-}
-
-bashrc_contains_dotnet_root() {
-    if grep -q '^export DOTNET_ROOT=$HOME/.dotnet$' ~/.bashrc; then
-        echo True
-    else
-        echo False
-    fi
-}

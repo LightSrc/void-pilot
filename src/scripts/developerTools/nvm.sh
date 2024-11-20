@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash -e
 sleep 2
 
 echo "Select NodeJS version which you want to install:"

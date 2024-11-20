@@ -13,6 +13,10 @@ Then if you want to run it again, just move to your directory where you run prev
 cd ~/void-pilot
 ./void-pilot
 ```
+**or just type in your terminal**
+```bash
+void-pilot
+```
 
 ## Goals
 Primary objective is to create the best possible post-install utility that simplifies package installation without any unnecessary complexity. Additionally, Void Pilot will enable users to install packages not available in the main Void repository, such as Discord or browsers like Brave and Thorium (some of them are accessible via Flatpak).
