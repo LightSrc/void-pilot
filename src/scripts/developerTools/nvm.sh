@@ -37,7 +37,7 @@ case $selected_number in
         ;;
 esac
 
-sudo xbps-install curl
+sudo xbps-install -y curl
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 

@@ -22,7 +22,7 @@ else
     echo "Installing .NET $channel SDK"
 fi
 
-sudo xbps-install -S wget icu-libs openssl mit-krb5-libs libgdiplus
+sudo xbps-install -Sy wget icu-libs openssl mit-krb5-libs libgdiplus
 
 wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
 chmod +x ./dotnet-install.sh
@@ -31,7 +31,7 @@ chmod +x ./dotnet-install.sh
 rm dotnet-install.sh
 
 if [ -f ~/.bashrc ]; then
-    if [ ! bashrc_contains_dotnet_root ]; then
+    if [ "$(bashrc_contains_dotnet_root)" = "False" ]; then
         echo 'export DOTNET_ROOT=$HOME/.dotnet' >> ~/.bashrc
         echo 'export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools' >> ~/.bashrc
         bash -c 'source ~/.bashrc'
@@ -41,7 +41,7 @@ if [ -f ~/.bashrc ]; then
 fi
 
 if [ -f ~/.zshrc ]; then
-    if [ ! zshrc_contains_dotnet_root ]; then
+    if [ "$(zshrc_contains_dotnet_root)" = "False" ]; then
         echo 'export DOTNET_ROOT=$HOME/.dotnet' >> ~/.zshrc
         echo 'export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools' >> ~/.zshrc
         bash -c 'source ~/.zshrc'

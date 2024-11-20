@@ -23,7 +23,7 @@ read add_to_path_answer
 
 if [ $add_to_path_answer = "y" ] || [ $add_to_path_answer = "yes" ]; then
     if [ -f ~/.bashrc ]; then
-        if [ ! bashrc_contains_void_pilot_path ]; then
+        if [ "$(bashrc_contains_void_pilot_path)" = "False" ]; then
             echo 'export PATH=$HOME/void-pilot:$PATH' >> ~/.bashrc
             bash -c 'source ~/.bashrc'
         else
@@ -32,7 +32,7 @@ if [ $add_to_path_answer = "y" ] || [ $add_to_path_answer = "yes" ]; then
     fi
 
     if [ -f ~/.zshrc ]; then
-        if [ ! zshrc_contains_void_pilot_path ]; then
+        if [ "$(zshrc_contains_void_pilot_path)" = "False" ]; then
             echo 'export PATH=$HOME/void-pilot:$PATH' >> ~/.zshrc
             bash -c 'source ~/.zshrc'
         else
