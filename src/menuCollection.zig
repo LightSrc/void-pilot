@@ -80,6 +80,12 @@ pub const menuCollection = [_]MenuList{
                 .flatpak_script = null,
             },
             .{
+                .title = "Install Graphical Design Apps",
+                .child = .graphicalAppsMenu,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
                 .title = "Install Messaging Clients",
                 .child = .messagingMenu,
                 .xbps_script = null,
@@ -620,7 +626,7 @@ pub const menuCollection = [_]MenuList{
     .{
         .items = &[_]InstallMenu{
             .{
-                .title = "LibreOffice (Full Suite)",
+                .title = "LibreOffice (All apps)",
                 .child = null,
                 .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "libreoffice"},
                 .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "org.libreoffice.LibreOffice" },
@@ -682,6 +688,36 @@ pub const menuCollection = [_]MenuList{
         },
         .state = .vmsMenu,
         .parent = .developerToolsMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Install Blender",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "blender" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "org.blender.Blender" },
+            },
+            .{
+                .title = "Install GIMP",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "gimp" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "org.gimp.GIMP" },
+            },
+            .{
+                .title = "Install Krita",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "krita" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "org.kde.krita" },
+            },
+            .{
+                .title = "Install Inkscape",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "inkscape" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "org.inkscape.Inkscape" },
+            },
+        },
+        .state = .graphicalAppsMenu,
+        .parent = .appMenu,
     },
     .{
         .items = &[_]InstallMenu{
