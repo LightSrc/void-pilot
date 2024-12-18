@@ -86,6 +86,12 @@ pub const menuCollection = [_]MenuList{
                 .flatpak_script = null,
             },
             .{
+                .title = "Install File Sharing Apps",
+                .child = .fileSharingMenu,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
                 .title = "Install Messaging Clients",
                 .child = .messagingMenu,
                 .xbps_script = null,
@@ -717,6 +723,30 @@ pub const menuCollection = [_]MenuList{
             },
         },
         .state = .graphicalAppsMenu,
+        .parent = .appMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Install qBittorrent",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "qbittorrent" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "org.qbittorrent.qBittorrent" },
+            },
+            .{
+                .title = "Install Transmission",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "transmission" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "com.transmissionbt.Transmission" },
+            },
+            .{
+                .title = "Install Nextcloud Desktop",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "nextcloud-client" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "com.nextcloud.desktopclient.nextcloud" },
+            },
+        },
+        .state = .fileSharingMenu,
         .parent = .appMenu,
     },
     .{

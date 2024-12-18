@@ -12,6 +12,7 @@ pub const MenuState = enum {
     gameLaunchersMenu,
     gamingMenu,
     graphicalAppsMenu,
+    fileSharingMenu,
     messagingMenu,
     kernelMenu,
     terminalsMenu,
