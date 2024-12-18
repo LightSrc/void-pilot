@@ -386,6 +386,12 @@ pub const menuCollection = [_]MenuList{
                 .flatpak_script = null,
             },
             .{
+                .title = "Install Sublime Text 3",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "sublime-text3" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "com.sublimetext.three" },
+            },
+            .{
                 .title = "Install Vim",
                 .child = null,
                 .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "vim" },
@@ -478,25 +484,25 @@ pub const menuCollection = [_]MenuList{
             .{
                 .title = "Install Linux Kernel 6.12",
                 .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "linux6.12"},
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "linux6.12" },
                 .flatpak_script = null,
             },
             .{
                 .title = "Install Linux Kernel 6.11",
                 .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "linux6.11"},
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "linux6.11" },
                 .flatpak_script = null,
             },
             .{
                 .title = "Install Linux Kernel 6.6",
                 .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "linux6.6"},
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "linux6.6" },
                 .flatpak_script = null,
             },
             .{
                 .title = "Install Linux Kernel 6.1",
                 .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "linux6.1"},
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "linux6.1" },
                 .flatpak_script = null,
             },
             .{
@@ -532,7 +538,7 @@ pub const menuCollection = [_]MenuList{
             .{
                 .title = "Install Go",
                 .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "go"},
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "go" },
                 .flatpak_script = null,
             },
             .{
@@ -544,19 +550,19 @@ pub const menuCollection = [_]MenuList{
             .{
                 .title = "Install Python (v2)",
                 .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "python"},
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "python" },
                 .flatpak_script = null,
             },
             .{
                 .title = "Install Python3",
                 .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "python3"},
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "python3" },
                 .flatpak_script = null,
             },
             .{
                 .title = "Install Ruby",
                 .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "ruby"},
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "ruby" },
                 .flatpak_script = null,
             },
             .{
@@ -586,7 +592,7 @@ pub const menuCollection = [_]MenuList{
             .{
                 .title = "Install Gamemode",
                 .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "gamemode"},
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "gamemode" },
                 .flatpak_script = null,
             },
             .{
@@ -598,7 +604,7 @@ pub const menuCollection = [_]MenuList{
             .{
                 .title = "Install MangoHud",
                 .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "MangoHud"},
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "MangoHud" },
                 .flatpak_script = null,
             },
         },
