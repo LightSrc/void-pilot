@@ -548,6 +548,12 @@ pub const menuCollection = [_]MenuList{
                 .flatpak_script = null,
             },
             .{
+                .title = "Install DB Tools",
+                .child = .dbToolsMenu,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
                 .title = "Install .NET SDK",
                 .child = null,
                 .xbps_script = &[_][]const u8{"./scripts/developerTools/dotnet-sdk.sh"},
@@ -748,6 +754,30 @@ pub const menuCollection = [_]MenuList{
         },
         .state = .fileSharingMenu,
         .parent = .appMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Install DBeaver",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "dbeaver" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "io.dbeaver.DBeaverCommunity" },
+            },
+            .{
+                .title = "Install SQLite Browser",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "sqlitebrowser" },
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "org.sqlitebrowser.sqlitebrowser" },
+            },
+            .{
+                .title = "Install RedisInsight",
+                .child = null,
+                .xbps_script = null,
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "com.redis.RedisInsight" },
+            },
+        },
+        .state = .dbToolsMenu,
+        .parent = .developerToolsMenu,
     },
     .{
         .items = &[_]InstallMenu{
