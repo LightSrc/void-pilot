@@ -98,7 +98,7 @@ pub const menuCollection = [_]MenuList{
                 .flatpak_script = null,
             },
             .{
-                .title = "Install Office",
+                .title = "Install Office Apps",
                 .child = .officeMenu,
                 .xbps_script = null,
                 .flatpak_script = null,
@@ -530,6 +530,12 @@ pub const menuCollection = [_]MenuList{
                 .flatpak_script = null,
             },
             .{
+                .title = "Install Virtual Machine Managers",
+                .child = .vmsMenu,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
                 .title = "Install .NET SDK",
                 .child = null,
                 .xbps_script = &[_][]const u8{"./scripts/developerTools/dotnet-sdk.sh"},
@@ -652,6 +658,30 @@ pub const menuCollection = [_]MenuList{
         },
         .state = .officeMenu,
         .parent = .appMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Install Virt-Manager",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "virt-manager", "qemu", "libvirtd" },
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Gnome Boxes",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "gnome-boxes", "qemu", "libvirtd" },
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install VirtualBox",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "virtualbox-ose" },
+                .flatpak_script = null,
+            },
+        },
+        .state = .vmsMenu,
+        .parent = .developerToolsMenu,
     },
     .{
         .items = &[_]InstallMenu{
