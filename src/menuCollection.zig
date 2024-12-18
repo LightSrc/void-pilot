@@ -98,6 +98,12 @@ pub const menuCollection = [_]MenuList{
                 .flatpak_script = null,
             },
             .{
+                .title = "Install Office",
+                .child = .officeMenu,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
                 .title = "Install Code Editors & IDEs",
                 .child = .codeEditorsMenu,
                 .xbps_script = null,
@@ -572,6 +578,12 @@ pub const menuCollection = [_]MenuList{
     .{
         .items = &[_]InstallMenu{
             .{
+                .title = "Install Gamescope",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "gamescope"},
+                .flatpak_script = null,
+            },
+            .{
                 .title = "Install Gamemode",
                 .child = null,
                 .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "gamemode"},
@@ -592,6 +604,48 @@ pub const menuCollection = [_]MenuList{
         },
         .state = .gamingMenu,
         .parent = .mainMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "LibreOffice (Full Suite)",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "libreoffice"},
+                .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "org.libreoffice.LibreOffice" },
+            },
+            .{
+                .title = "LibreOffice Calc",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "libreoffice-calc"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "LibreOffice Draw",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "libreoffice-draw"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "LibreOffice Impress",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "libreoffice-impress"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "LibreOffice Math",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "libreoffice-math"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "LibreOffice Writer",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "libreoffice-writer"},
+                .flatpak_script = null,
+            },
+        },
+        .state = .officeMenu,
+        .parent = .appMenu,
     },
     .{
         .items = &[_]InstallMenu{

@@ -14,5 +14,6 @@ pub const MenuState = enum {
     messagingMenu,
     kernelMenu,
     terminalsMenu,
+    officeMenu,
     xbpsOrFlatpak,
 };
