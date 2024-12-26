@@ -55,6 +55,12 @@ pub const menuCollection = [_]MenuList{
                 .xbps_script = null,
                 .flatpak_script = null,
             },
+            .{
+                .title = "Clean System",
+                .child = .cleanMenu,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
         },
         .state = .mainMenu,
         .parent = null,
@@ -523,12 +529,6 @@ pub const menuCollection = [_]MenuList{
                 .xbps_script = &[_][]const u8{"./scripts/install-tkg-kernel.sh"},
                 .flatpak_script = null,
             },
-            .{
-                .title = "Purge old kernels",
-                .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/purge-kernels.sh"},
-                .flatpak_script = null,
-            },
         },
         .state = .kernelMenu,
         .parent = .mainMenu,
@@ -809,6 +809,30 @@ pub const menuCollection = [_]MenuList{
         },
         .state = .programmingLangMenu,
         .parent = .developerToolsMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Purge Old Kernels",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/purge-kernels.sh"},
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Delete Cached Packages",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/remove-cached-packages.sh"},
+                .flatpak_script = null,
+            },
+.{
+                .title = "Delete Orphan Packages",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/remove-orphan-packages.sh"},
+                .flatpak_script = null,
+            },
+        },
+        .state = .cleanMenu,
+        .parent = .mainMenu,
     },
     .{
         .items = &[_]InstallMenu{
