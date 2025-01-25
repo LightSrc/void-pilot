@@ -8,17 +8,27 @@ const keysHandler = @import("keysHandler.zig");
 const header = @import("panels/header.zig");
 const menu = @import("panels/menu.zig");
 const keybindings = @import("panels/keybindings.zig");
+const style = @import("style.zig");
 
 pub var vx: vaxis.Vaxis = undefined;
 
 pub fn main() !void {
     try memoryModule.init();
 
+    const term_env = std.posix.getenv("TERM");
+    if (term_env) |t| {
+        if (std.mem.eql(u8, t, "dumb") or std.mem.eql(u8, t, "vt100") or std.mem.eql(u8, t, "ansi")) {
+            vx.sgr = .legacy;
+        } else {
+            vx.sgr = .standard;
+            style.changeThemeColorsToRgb();
+        }
+    }
+
     var tty = try vaxis.Tty.init();
     defer tty.deinit();
 
     vx = try vaxis.init(memoryModule.alloc, .{});
-    vx.sgr = .legacy;
     defer vx.deinit(memoryModule.alloc, tty.anyWriter());
     var loop: vaxis.Loop(union(enum) {
         key_press: vaxis.Key,
