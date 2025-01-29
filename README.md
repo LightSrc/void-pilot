@@ -18,7 +18,7 @@ void-pilot
 ```
 OR
 ```bash
-./void-pilot/void-pilot
+$HOME/void-pilot/void-pilot
 ```
 
 ## How To Update
