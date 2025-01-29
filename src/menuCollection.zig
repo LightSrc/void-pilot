@@ -500,6 +500,12 @@ pub const menuCollection = [_]MenuList{
     .{
         .items = &[_]InstallMenu{
             .{
+                .title = "Install Linux Kernel 6.13",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "linux6.13" },
+                .flatpak_script = null,
+            },
+            .{
                 .title = "Install Linux Kernel 6.12",
                 .child = null,
                 .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "linux6.12" },
