@@ -2,12 +2,12 @@
 sleep 2
 
 echo "Select NodeJS version which you want to install:"
-echo "1. v18.*"
-echo "2. v19.*"
-echo "3. v20.*"
-echo "4. v21.*"
-echo "5. v22.*"
-echo "6. v23.*"
+echo "1. v18"
+echo "2. v19"
+echo "3. v20"
+echo "4. v21"
+echo "5. v22"
+echo "6. v23"
 read selected_number
 
 selected_version=""
@@ -41,6 +41,9 @@ sudo xbps-install -y curl
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 nvm install $selected_version
 
 echo "NodeJS v$selected_version is successfully installed!"
