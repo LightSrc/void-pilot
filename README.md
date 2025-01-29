@@ -1,21 +1,30 @@
 # Void Pilot - Post Install Utility
 
-## Overview
-Void Pilot aims to provide an intuitive and hassle-free experience when installing packages, programs, or drivers on your system. This post-install utility is designed to be a one-stop for all your installation needs.
+![Preview](/.github/preview.png)
 
-## How To Run
-Run this command in your terminal in directory where you want to install
+## Overview
+**Void Pilot** is designed to offer a seamless and user-friendly experience for installing packages, programs, and drivers on your system. Ever wished you could set up your desktop environment and other programs without diving into lengthy wikis? Now you can! With our automated scripts, all the heavy lifting is done for you, making installation a breeze.
+
+## How To Install & Run
+Run this command in your terminal. This script will install void-pilot in your $HOME folder
 ```bash
 curl -fSL https://github.com/LightSrc/void-pilot/releases/latest/download/install.sh | sh
 ```
-Then if you want to run it again, just move to your directory where you run previously install.sh. For example if you did it in your home directory
-```bash
-cd ~/void-pilot
-./void-pilot
-```
-**or just type in your terminal**
+If you want to run void-pilot again
+> [!NOTE]
+> after first installation you need to close terminal to make this command work
 ```bash
 void-pilot
+```
+OR
+```bash
+./void-pilot/void-pilot
+```
+
+## How To Update
+Simply copy/paste this command in your terminal and script will do everything for you.
+```bash
+curl -fSL https://github.com/LightSrc/void-pilot/releases/latest/download/install.sh | sh
 ```
 
 ## Goals
