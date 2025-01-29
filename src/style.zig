@@ -3,7 +3,6 @@ const menu = @import("panels/menu.zig");
 
 pub const selected_bg: vaxis.Cell.Color = .{ .index = 15 };
 pub const active_bg: vaxis.Cell.Color = .{ .index = 2 };
-pub const other_bg: vaxis.Cell.Color = .{ .index = 0 };
 pub const row_bg_1: vaxis.Cell.Color = .{ .index = 0 };
 pub const row_bg_2: vaxis.Cell.Color = .{ .index = 8 };
 
