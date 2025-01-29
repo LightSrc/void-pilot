@@ -3,8 +3,8 @@
     .version = "0.0.0",
     .dependencies = .{
         .vaxis = .{
-            .url = "git+https://github.com/rockorager/libvaxis?ref=main#22dcdb6bf37e44393359737b8ef1d229a6dc9363",
-            .hash = "1220c53b75e66a6558c900c36349d835429345999428291a244862c9ac54763f695f",
+            .url = "git+https://github.com/rockorager/libvaxis?ref=main#38f3e7b8fef26d0747b950098933314f9e8afa3b",
+            .hash = "12200b3310585a3baa66b584e74853353cdadae9998a80a8acb6024bb998413a04af",
         },
     },
     .paths = .{

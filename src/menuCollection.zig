@@ -506,12 +506,6 @@ pub const menuCollection = [_]MenuList{
                 .flatpak_script = null,
             },
             .{
-                .title = "Install Linux Kernel 6.11",
-                .child = null,
-                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "linux6.11" },
-                .flatpak_script = null,
-            },
-            .{
                 .title = "Install Linux Kernel 6.6",
                 .child = null,
                 .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "linux6.6" },
