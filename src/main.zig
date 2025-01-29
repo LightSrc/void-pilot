@@ -17,7 +17,8 @@ pub fn main() !void {
 
     const term_env = std.posix.getenv("TERM");
     if (term_env) |t| {
-        if (std.mem.eql(u8, t, "dumb") or std.mem.eql(u8, t, "vt100") or std.mem.eql(u8, t, "ansi")) {
+        //std.log.debug("term env: {s}", .{t});
+        if (std.mem.eql(u8, t, "dumb") or std.mem.eql(u8, t, "vt100") or std.mem.eql(u8, t, "ansi") or std.mem.eql(u8, t, "linux")) {
             vx.sgr = .legacy;
         } else {
             vx.sgr = .standard;
