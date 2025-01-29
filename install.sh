@@ -35,7 +35,7 @@ fi
 curl -fsSL "$DOWNLOAD_URL" -o void-pilot-x86_64-linux.tar.gz
 tar xfz "void-pilot-x86_64-linux.tar.gz" --directory $HOME
 rm void-pilot-x86_64-linux.tar.gz
-chmod +x $HOME/void-pilot
+chmod +x $HOME/void-pilot/void-pilot
 
 if [ -f ~/.bashrc ]; then
     if [ "$(bashrc_contains_void_pilot_path)" = "False" ]; then
@@ -55,4 +55,4 @@ if [ -f ~/.zshrc ]; then
     fi
 fi
 
-./void-pilot
+$HOME/void-pilot/void-pilot
