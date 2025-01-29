@@ -29,8 +29,8 @@ isWofiInstalled(){
     which wofi >/dev/null 2>&1
 }
 
-./scripts/install-login-manager.sh
 ./scripts/install-pulse-or-pipewire.sh
+./scripts/install-login-manager.sh
 
 if ! isHyprpaperInstalled; then
     read -p "Do you want to install hyprpaper? (yes, no): " answer

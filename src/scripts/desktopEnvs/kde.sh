@@ -14,7 +14,7 @@ if [ ! -e /var/service/dbus ]; then
     sudo ln -s /etc/sv/dbus /var/service
 fi
 
-./scripts/install-login-manager.sh
 ./scripts/install-pulse-or-pipewire.sh
+./scripts/install-login-manager.sh
 
 echo "KDE successfully installed"
