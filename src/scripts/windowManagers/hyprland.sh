@@ -10,14 +10,6 @@ fi
 
 sudo xbps-install -Sy hyprland xdg-desktop-portal-hyprland
 
-isGdmInstalled() {
-    [ -x "$(command -v gdm)" ]
-    return $?
-}
-isSddmInstalled() {
-    [ -x "$(command -v sddm)" ]
-    return $?
-}
 isHyprpaperInstalled(){
     which hyprpaper >/dev/null 2>&1
 }
@@ -37,23 +29,8 @@ isWofiInstalled(){
     which wofi >/dev/null 2>&1
 }
 
-if ! isGdmInstalled && ! isSddmInstalled; then
-    read -p "Do you want to install display manager? (gdm, sddm or press ENTER if none of these): " answer
-
-    if [ "$answer" = "sddm" ]; then
-        sudo xbps-install -Sy sddm
-        if [ ! -e /var/service/sddm ]; then
-            sudo ln -s /etc/sv/sddm /var/service
-        fi
-    fi
-
-    if [ "$answer" = "gdm" ]; then
-        sudo xbps-install -Sy gdm
-        if [ ! -e /var/service/gdm ]; then
-            sudo ln -s /etc/sv/gdm /var/service
-        fi
-    fi
-fi
+./scripts/install-login-manager.sh
+./scripts/install-pulse-or-pipewire.sh
 
 if ! isHyprpaperInstalled; then
     read -p "Do you want to install hyprpaper? (yes, no): " answer
