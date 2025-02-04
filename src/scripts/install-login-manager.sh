@@ -5,6 +5,7 @@ isGdmInstalled() {
         return 0
     else
         return 1
+    fi
 }
 
 isSddmInstalled() {
@@ -12,7 +13,7 @@ isSddmInstalled() {
         return 0
     else
         return 1
-
+    fi
 }
 
 if ! isGdmInstalled && ! isSddmInstalled; then
