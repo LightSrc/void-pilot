@@ -500,9 +500,15 @@ pub const menuCollection = [_]MenuList{
     .{
         .items = &[_]InstallMenu{
             .{
-                .title = "Install Linux Kernel 6.13",
+                .title = "Install Linux Kernel 6.16",
                 .child = null,
-                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "linux6.13" },
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "linux6.16" },
+                .flatpak_script = null,
+            },
+            .{
+                .title = "Install Linux Kernel 6.15",
+                .child = null,
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "linux6.15" },
                 .flatpak_script = null,
             },
             .{
@@ -562,7 +568,7 @@ pub const menuCollection = [_]MenuList{
             .{
                 .title = "Install Docker",
                 .child = null,
-                .xbps_script = &[_][]const u8{ "./scripts/developerTools/docker.sh" },
+                .xbps_script = &[_][]const u8{"./scripts/developerTools/docker.sh"},
                 .flatpak_script = null,
             },
             .{
@@ -577,7 +583,6 @@ pub const menuCollection = [_]MenuList{
                 .xbps_script = null,
                 .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "com.getpostman.Postman" },
             },
-
         },
         .state = .developerToolsMenu,
         .parent = .mainMenu,
@@ -587,7 +592,7 @@ pub const menuCollection = [_]MenuList{
             .{
                 .title = "Install Gamescope",
                 .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "gamescope"},
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "gamescope" },
                 .flatpak_script = null,
             },
             .{
@@ -617,37 +622,37 @@ pub const menuCollection = [_]MenuList{
             .{
                 .title = "LibreOffice (All apps)",
                 .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "libreoffice"},
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "libreoffice" },
                 .flatpak_script = &[_][]const u8{ "./scripts/flatpak/flathub-install.sh", "org.libreoffice.LibreOffice" },
             },
             .{
                 .title = "LibreOffice Calc",
                 .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "libreoffice-calc"},
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "libreoffice-calc" },
                 .flatpak_script = null,
             },
             .{
                 .title = "LibreOffice Draw",
                 .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "libreoffice-draw"},
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "libreoffice-draw" },
                 .flatpak_script = null,
             },
             .{
                 .title = "LibreOffice Impress",
                 .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "libreoffice-impress"},
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "libreoffice-impress" },
                 .flatpak_script = null,
             },
             .{
                 .title = "LibreOffice Math",
                 .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "libreoffice-math"},
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "libreoffice-math" },
                 .flatpak_script = null,
             },
             .{
                 .title = "LibreOffice Writer",
                 .child = null,
-                .xbps_script = &[_][]const u8{"./scripts/xbps/xbps.sh", "libreoffice-writer"},
+                .xbps_script = &[_][]const u8{ "./scripts/xbps/xbps.sh", "libreoffice-writer" },
                 .flatpak_script = null,
             },
         },
@@ -824,7 +829,7 @@ pub const menuCollection = [_]MenuList{
                 .xbps_script = &[_][]const u8{"./scripts/remove-cached-packages.sh"},
                 .flatpak_script = null,
             },
-.{
+            .{
                 .title = "Delete Orphan Packages",
                 .child = null,
                 .xbps_script = &[_][]const u8{"./scripts/remove-orphan-packages.sh"},
