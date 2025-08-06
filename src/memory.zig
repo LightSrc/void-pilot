@@ -6,7 +6,7 @@ const log = std.log.scoped(.main);
 
 var gpa = heap.GeneralPurposeAllocator(.{}){};
 pub const alloc = gpa.allocator();
-var event_arena = heap.ArenaAllocator.init(alloc);
+pub var event_arena = heap.ArenaAllocator.init(alloc);
 pub const event_alloc = event_arena.allocator();
 
 pub fn init() !void {

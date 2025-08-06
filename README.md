@@ -5,12 +5,13 @@
 ## Overview
 **Void Pilot** is designed to offer a seamless and user-friendly experience for installing packages, programs, and drivers on your system. Ever wished you could set up your desktop environment and other programs without diving into lengthy wikis? Now you can! With our automated scripts, all the heavy lifting is done for you, making installation a breeze.
 
-## How To Install & Run
+## How To Install
 Run this command in your terminal. This script will install void-pilot in your $HOME folder
 ```bash
 curl -fSL https://github.com/LightSrc/void-pilot/releases/latest/download/install.sh | sh
 ```
-If you want to run void-pilot again
+
+## How To Run
 > [!NOTE]
 > after first installation you need to close terminal to make this command work
 ```bash

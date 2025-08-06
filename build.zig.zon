@@ -1,10 +1,11 @@
 .{
-    .name = "void-pilot",
+    .name = .void_pilot,
+    .fingerprint = 0x9dbe12d7fbf82314,
     .version = "0.0.0",
     .dependencies = .{
         .vaxis = .{
-            .url = "git+https://github.com/rockorager/libvaxis?ref=main#38f3e7b8fef26d0747b950098933314f9e8afa3b",
-            .hash = "12200b3310585a3baa66b584e74853353cdadae9998a80a8acb6024bb998413a04af",
+            .url = "git+https://github.com/rockorager/libvaxis#33ae50cadca891c801eaed2039c12eae82b2c067",
+            .hash = "vaxis-0.1.0-BWNV_OYOCQBtnAkzfqqjBpeN6k6sj0c1BTTJcWQbr_qF",
         },
     },
     .paths = .{

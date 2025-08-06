@@ -23,7 +23,7 @@ pub fn create() !void {
     var env = try std.process.getEnvMap(memoryModule.alloc);
     defer env.deinit();
 
-    var buf: [std.fs.MAX_PATH_BYTES]u8 = undefined;
+    var buf: [std.fs.max_path_bytes]u8 = undefined;
     const cwd = try std.fs.selfExeDirPath(&buf);
     const vt_opts: vaxis.widgets.Terminal.Options = .{
         .winsize = .{
@@ -48,12 +48,14 @@ pub fn create() !void {
 }
 
 pub fn deinitialize() void {
-    terminal_.?.deinit();
+    if (terminal_ != null) {
+        terminal_.?.deinit();
+    }
     terminal_ = null;
     menu.menuTable.active = true;
 }
 
-pub fn update(keys: anytype) !void {
+pub fn update(keys: vaxis.widgets.Terminal.InputEvent) !void {
     if (terminal_ == null) return;
     try terminal_.?.update(keys);
 }

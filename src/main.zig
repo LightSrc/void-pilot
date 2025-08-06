@@ -13,6 +13,12 @@ const style = @import("style.zig");
 pub var vx: vaxis.Vaxis = undefined;
 
 pub fn main() !void {
+    const uid = std.os.linux.getuid();
+    if (uid == 0) {
+        std.log.err("Running this program as root is not allowed", .{});
+        return;
+    }
+
     try memoryModule.init();
 
     const term_env = std.posix.getenv("TERM");
@@ -52,7 +58,10 @@ pub fn main() !void {
             switch (event) {
                 .key_press => |key| {
                     try keysHandler.onKey(key);
-                    if (key.matches('c', .{ .ctrl = true })) return;
+                    if (key.matches('c', .{ .ctrl = true })) {
+                        terminalModule.deinitialize();
+                        return;
+                    }
                     if (key.matchExact(enter_key, .{})) terminalModule.closeTerminal();
                     if (key.matches(enter_key, .{ .ctrl = true })) terminalModule.tryCancelScript();
                     try terminalModule.update(.{ .key_press = key });
