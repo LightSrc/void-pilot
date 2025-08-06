@@ -11,7 +11,6 @@ on:
 jobs:
     publish-binaries:
         name: Publish binaries
-        needs: changelog
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -20,7 +19,7 @@ jobs:
 
         steps:
             - name: Checkout the repository
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
               with:
                   submodules: recursive
 
