@@ -56,6 +56,12 @@ pub const menuCollection = [_]MenuList{
                 .flatpak_script = null,
             },
             .{
+                .title = "Tweaks",
+                .child = .tweaks,
+                .xbps_script = null,
+                .flatpak_script = null,
+            },
+            .{
                 .title = "Clean System",
                 .child = .cleanMenu,
                 .xbps_script = null,
@@ -814,6 +820,18 @@ pub const menuCollection = [_]MenuList{
         },
         .state = .programmingLangMenu,
         .parent = .developerToolsMenu,
+    },
+    .{
+        .items = &[_]InstallMenu{
+            .{
+                .title = "Change download mirror",
+                .child = null,
+                .xbps_script = &[_][]const u8{"./scripts/tweaks/change-mirror.sh"},
+                .flatpak_script = null,
+            },
+        },
+        .state = .tweaks,
+        .parent = .mainMenu,
     },
     .{
         .items = &[_]InstallMenu{

@@ -22,4 +22,5 @@ pub const MenuState = enum {
     officeMenu,
     vmsMenu,
     xbpsOrFlatpak,
+    tweaks,
 };
